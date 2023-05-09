@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 export default class Grid extends Component {
 	toCssClasses(numbers) {
-		const cols = numbers ? numbers.spli(" ") : [];
+		const cols = numbers ? numbers.split(" ") : [];
 		let classes = ""; // classes do bootstrap concatenada
 		if (cols[0]) classes += `col-xs-${cols[0]}`;
 		if (cols[1]) classes += `col-sm-${cols[1]}`;
