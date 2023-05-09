@@ -14,6 +14,8 @@ export default function (state = INITIAL_STATE, action) {
                 ...state,
                 summary: action.payload.data
             }
+        default:
+            return state;
     }
     return state;
 }
