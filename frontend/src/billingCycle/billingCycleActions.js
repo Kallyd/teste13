@@ -19,7 +19,10 @@ export function getList() {
 export function create(values) {
     return submit(values, 'post');
 }
-
+// my method to delete (delete from list)
+export function exclude(values) {
+    return submit(values, 'delete');
+}
 
 export function update(values) {
     return submit(values, 'put');
@@ -52,6 +55,19 @@ export function showUpdate(billingCycle) {
         selectTab('tabUpdate'),
         initialize('billingCycleForm', billingCycle)
     ]
+}
+
+// professor method to delete (shows the delete tab)
+export function showDelete(billingCycle) {
+    return [
+        showTabs('tabDelete'),
+        selectTab('tabDelete'),
+        initialize('billingCycleForm', billingCycle)
+    ]
+}
+
+export function remove(values) {
+    return submit(values, 'delete');
 }
 
 // inicialize and cancel action creator

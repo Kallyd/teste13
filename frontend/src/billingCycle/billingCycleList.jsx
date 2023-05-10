@@ -3,8 +3,12 @@ import React, { Component } from "react";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 
-import { getList } from "./billingCycleActions";
-import { showUpdate } from "./billingCycleActions";
+import {
+	getList,
+	exclude,
+	showDelete,
+	showUpdate,
+} from "./billingCycleActions";
 
 class BillingCycleList extends Component {
 	componentWillMount() {
@@ -17,6 +21,7 @@ class BillingCycleList extends Component {
 				<td>{billingCycle.name}</td>
 				<td>{billingCycle.month}</td>
 				<td>{billingCycle.year}</td>
+				{/* refactor button on component - todoList app has an example */}
 				<td>
 					<button
 						className="btn btn-warning"
@@ -24,6 +29,22 @@ class BillingCycleList extends Component {
 						<i className="fa fa-pencil"></i>
 					</button>
 				</td>
+				{/* professor button to delete */}
+				<td>
+					<button
+						className="btn btn-danger"
+						onClick={() => this.props.showDelete(billingCycle)}>
+						<i className="fa fa-pencil"></i>
+					</button>
+				</td>
+				{/* my button to delete register */}
+				{/* <td>
+					<button
+						className="btn btn-danger"
+						onClick={() => this.props.exclude(billingCycle)}>
+						<i className="fa fa-trash"></i>
+					</button>
+				</td> */}
 			</tr>
 		));
 	}
@@ -51,6 +72,6 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) =>
-	bindActionCreators({ getList, showUpdate }, dispatch);
+	bindActionCreators({ getList, showUpdate, exclude, showDelete }, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(BillingCycleList);
