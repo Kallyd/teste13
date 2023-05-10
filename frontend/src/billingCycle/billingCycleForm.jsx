@@ -48,4 +48,6 @@ class BillingCycleForm extends Component {
 }
 
 // form is a object passa via parameter that as a id to de the named 'billingCycleForm'
-export default reduxForm({ form: "billingCycleForm" })(BillingCycleForm);
+export default reduxForm({ form: "billingCycleForm", destroyOnUnmount: false })(
+	BillingCycleForm
+);
