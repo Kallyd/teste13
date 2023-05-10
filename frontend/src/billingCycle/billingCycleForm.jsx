@@ -45,12 +45,12 @@ class BillingCycleForm extends Component {
 					/>
 				</div>
 				<div className="box-footer">
-					<button type="submit" className="btn btn-primary">
-						{this.props.label}
+					<button type="submit" className={`btn btn-${this.props.submitIcon}`}>
+						{this.props.submitLabel}
 					</button>
 					<button
 						type="button"
-						className="btn btn-default"
+						className={`btn btn-${this.props.buttonIcon}`}
 						onClick={this.props.init}>
 						Cancel
 					</button>
