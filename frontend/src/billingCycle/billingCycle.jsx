@@ -12,6 +12,7 @@ import TabsHeader from "../common/tab/tabsHeader";
 import TabsContent from "../common/tab/tabsContent";
 import TabHeader from "../common/tab/tabHeader";
 import TabContent from "../common/tab/tabContent";
+import BillingCycleList from "./billingCycleList";
 
 class BillingCycles extends Component {
 	componentWillMount() {
@@ -32,16 +33,19 @@ class BillingCycles extends Component {
 						</TabsHeader>
 						<TabsContent>
 							<TabContent id="tabList">
-								<h1>List</h1>
+								<BillingCycleList />
 							</TabContent>
 							<TabContent id="tabCreate">
 								<h1>Include</h1>
+								<BillingCycleList />
 							</TabContent>
 							<TabContent id="tabUpdate">
 								<h1>Update</h1>
+								<BillingCycleList />
 							</TabContent>
 							<TabContent id="tabDelete">
 								<h1>Exclude</h1>
+								<BillingCycleList />
 							</TabContent>
 						</TabsContent>
 					</Tabs>
