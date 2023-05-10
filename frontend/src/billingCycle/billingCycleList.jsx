@@ -28,15 +28,14 @@ class BillingCycleList extends Component {
 						onClick={() => this.props.showUpdate(billingCycle)}>
 						<i className="fa fa-pencil"></i>
 					</button>
-				</td>
-				{/* professor button to delete */}
-				<td>
+					{/* professor button to delete */}
 					<button
 						className="btn btn-danger"
 						onClick={() => this.props.showDelete(billingCycle)}>
 						<i className="fa fa-pencil"></i>
 					</button>
 				</td>
+
 				{/* my button to delete register */}
 				{/* <td>
 					<button
@@ -57,7 +56,7 @@ class BillingCycleList extends Component {
 							<th>Name</th>
 							<th>Month</th>
 							<th>Year</th>
-							<th>Actions</th>
+							<th className="table-actions">Actions</th>
 						</tr>
 					</thead>
 					<tbody>{this.renderRows()}</tbody>
