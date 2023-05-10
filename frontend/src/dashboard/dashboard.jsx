@@ -10,7 +10,7 @@ import Row from "../common/layout/row";
 
 class Dashboard extends Component {
 	// ligando action to component
-	componentDidMount() {
+	componentWillMount() {
 		this.props.getSummary();
 	}
 
