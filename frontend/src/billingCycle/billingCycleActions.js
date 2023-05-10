@@ -15,20 +15,26 @@ export function getList() {
     }
 }
 
-// After middleware redux-thunk and redux-multi
+// after submit function is created
 export function create(values) {
+    return submit(values, 'post');
+}
+
+
+export function update(values) {
+    return submit(values, 'put');
+}
+
+// function used only in this module
+// values = form values && method = method called when backend is requested
+function submit(values, method) {
     return dispatch => {
-        Axios.post(`${BASE_URL}/billingCycles`, values)
+        const id = values._id ? values._id : '';
+        Axios[method](`${BASE_URL}/billingCycles/${id}`, values)
             .then(() => {
                 toastr.success("Sucess", "Successful Operation");
                 // the array only can be passed because of the mdd = redux-multi
                 dispatch(init())
-                // dispatch([
-                //     formReset('billingCycleForm'),
-                //     getList(),
-                //     selectTab('tabList'),
-                //     showTabs('tabList', 'tabCreate')
-                // ])
             })
             .catch(e => {
                 // data.errors comes from backend
@@ -65,6 +71,30 @@ export function init() {
 
 
 
+// After middleware redux-thunk and redux-multi
+// export function create(values) {
+//     return dispatch => {
+//         Axios.post(`${BASE_URL}/billingCycles`, values)
+//             .then(() => {
+//                 toastr.success("Sucess", "Successful Operation");
+//                 // the array only can be passed because of the mdd = redux-multi
+//                 dispatch(init())
+//                 // dispatch([
+//                 //     formReset('billingCycleForm'),
+//                 //     getList(),
+//                 //     selectTab('tabList'),
+//                 //     showTabs('tabList', 'tabCreate')
+//                 // ])
+//             })
+//             .catch(e => {
+//                 // data.errors comes from backend
+//                 e.response.data.errors.forEach(error => toastr.error("Error", error))
+//                 dispatch([
+//                     formReset('billingCycleForm')
+//                 ])
+//             })
+//     }
+// }
 
 
 
@@ -83,13 +113,13 @@ export function init() {
 
 // before middlewares
 // export function create(values) {
-//     // console.log(values)
-//     Axios.post(`${BASE_URL}/billingCycles`, values)
-//         .then(() => {
+    //     // console.log(values)
+    //     Axios.post(`${BASE_URL}/billingCycles`, values)
+    //         .then(() => {
 //             toastr.success("Sucess", "Successful Operation")
 //         })
 //         .catch(e => {
-//             // data.errors comes from backend
+    //             // data.errors comes from backend
 //             e.response.data.errors.forEach(error => toastr.error("Error", error))
 //         })
 //     return {
