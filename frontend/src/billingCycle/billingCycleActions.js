@@ -9,3 +9,11 @@ export function getList() {
         payload: request // request as a att [.data] that is their result
     }
 }
+
+export function create(values) {
+    // console.log(values)
+    Axios.post(`${BASE_URL}/billingCycles`, values);
+    return {
+        type: 'TEMP',
+    }
+}
