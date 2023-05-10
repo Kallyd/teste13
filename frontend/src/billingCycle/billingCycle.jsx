@@ -41,12 +41,11 @@ class BillingCycles extends Component {
 								<BillingCycleForm label="Submit" onSubmit={this.props.create} />
 							</TabContent>
 							<TabContent id="tabUpdate">
-								<h1>Update</h1>
-								<BillingCycleList />
+								<BillingCycleForm label="Update" />
 							</TabContent>
 							<TabContent id="tabDelete">
 								<h1>Exclude</h1>
-								<BillingCycleList />
+								<BillingCycleForm label="Delete" />
 							</TabContent>
 						</TabsContent>
 					</Tabs>
