@@ -5,6 +5,7 @@ import { reset as formReset, initialize } from 'redux-form'; // Action creator t
 import { showTabs, selectTab } from '../common/tab/tabActions';
 
 const BASE_URL = "http://localhost:3003/api";
+const INITIAL_VALUES = {}
 
 export function getList() {
     const request = Axios.get(`${BASE_URL}/billingCycles`)
@@ -14,19 +15,20 @@ export function getList() {
     }
 }
 
-// After middleware redux-thunk
+// After middleware redux-thunk and redux-multi
 export function create(values) {
     return dispatch => {
         Axios.post(`${BASE_URL}/billingCycles`, values)
             .then(() => {
                 toastr.success("Sucess", "Successful Operation");
                 // the array only can be passed because of the mdd = redux-multi
-                dispatch([
-                    formReset('billingCycleForm'),
-                    getList(),
-                    selectTab('tabList'),
-                    showTabs('tabList', 'tabCreate')
-                ])
+                dispatch(init())
+                // dispatch([
+                //     formReset('billingCycleForm'),
+                //     getList(),
+                //     selectTab('tabList'),
+                //     showTabs('tabList', 'tabCreate')
+                // ])
             })
             .catch(e => {
                 // data.errors comes from backend
@@ -43,6 +45,16 @@ export function showUpdate(billingCycle) {
         showTabs('tabUpdate'),
         selectTab('tabUpdate'),
         initialize('billingCycleForm', billingCycle)
+    ]
+}
+
+// inicialize and cancel action creator
+export function init() {
+    return [
+        showTabs('tabList', 'tabCreate'),
+        selectTab('tabList'),
+        getList(),
+        initialize('billingCycleForm', INITIAL_VALUES)
     ]
 }
 
