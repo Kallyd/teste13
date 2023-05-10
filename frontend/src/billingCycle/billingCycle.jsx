@@ -6,6 +6,7 @@ import Tabs from "../common/tab/tabs";
 import TabsHeader from "../common/tab/tabsHeader";
 import TabsContent from "../common/tab/tabsContent";
 import TabHeader from "../common/tab/tabHeader";
+import TabContent from "../common/tab/tabContent";
 
 class BillingCycles extends Component {
 	render() {
@@ -20,7 +21,20 @@ class BillingCycles extends Component {
 							<TabHeader label="Edit" icon="pencil" target="tabUpdate" />
 							<TabHeader label="Exclude" icon="trash-o" target="tabDelete" />
 						</TabsHeader>
-						<TabsContent></TabsContent>
+						<TabsContent>
+							<TabContent id="tabList">
+								<h1>List</h1>
+							</TabContent>
+							<TabContent id="tabCreate">
+								<h1>Include</h1>
+							</TabContent>
+							<TabContent id="tabUpdate">
+								<h1>Update</h1>
+							</TabContent>
+							<TabContent id="tabDelete">
+								<h1>Exclude</h1>
+							</TabContent>
+						</TabsContent>
 					</Tabs>
 				</Content>
 			</div>
