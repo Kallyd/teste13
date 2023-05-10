@@ -1,8 +1,12 @@
 // component that will be inside the tabsHeader
-
 import React, { Component } from "react";
 
-export default class TabHeader extends Component {
+import { bindActionCreators } from "redux";
+import { connect } from "react-redux";
+
+import { selectTab } from "./tabActions";
+
+class TabHeader extends Component {
 	render() {
 		return (
 			<li>
@@ -16,3 +20,9 @@ export default class TabHeader extends Component {
 		);
 	}
 }
+
+const mapStateToProps = (state) => ({ tab: state.tab });
+const mapDispatchToProps = (dispatch) =>
+	bindActionCreators({ selectTab }, dispatch);
+
+export default connect(mapStateToProps, mapDispatchToProps)(TabHeader);
