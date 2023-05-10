@@ -13,6 +13,7 @@ import TabsContent from "../common/tab/tabsContent";
 import TabHeader from "../common/tab/tabHeader";
 import TabContent from "../common/tab/tabContent";
 import BillingCycleList from "./billingCycleList";
+import BillingCycleForm from "./billingCycleForm";
 
 class BillingCycles extends Component {
 	componentWillMount() {
@@ -36,8 +37,7 @@ class BillingCycles extends Component {
 								<BillingCycleList />
 							</TabContent>
 							<TabContent id="tabCreate">
-								<h1>Include</h1>
-								<BillingCycleList />
+								<BillingCycleForm label="Submit" />
 							</TabContent>
 							<TabContent id="tabUpdate">
 								<h1>Update</h1>
