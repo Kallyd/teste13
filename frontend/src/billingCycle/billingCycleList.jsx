@@ -32,7 +32,7 @@ class BillingCycleList extends Component {
 					<button
 						className="btn btn-danger"
 						onClick={() => this.props.showDelete(billingCycle)}>
-						<i className="fa fa-pencil"></i>
+						<i className="fa fa-trash"></i>
 					</button>
 				</td>
 

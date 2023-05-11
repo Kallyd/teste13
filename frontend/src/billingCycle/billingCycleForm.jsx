@@ -4,22 +4,23 @@ import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 
 // reduxForm  = connect (form decorator)
-import { reduxForm, Field } from "redux-form";
+// formValueSelector retrives a value inside the form
+import { reduxForm, Field, formValueSelector } from "redux-form";
 
 import { init } from "./billingCycleActions";
-import labelAndInput from "../common/form/labelAndInput";
+import LabelAndInput from "../common/form/labelAndInput";
 import CreditList from "./creditList";
 
 class BillingCycleForm extends Component {
 	render() {
-		const { handleSubmit, readOnly } = this.props;
+		const { handleSubmit, readOnly, credits } = this.props;
 		// console.log(handleSubmit);
 		return (
 			<form action="" role="form" onSubmit={handleSubmit}>
 				<div className="box-body">
 					<Field
 						name="name"
-						component={labelAndInput}
+						component={LabelAndInput}
 						label="Name"
 						cols="12 4"
 						placeholder="Inform the name"
@@ -28,7 +29,7 @@ class BillingCycleForm extends Component {
 					/>
 					<Field
 						name="month"
-						component={labelAndInput}
+						component={LabelAndInput}
 						label="Month"
 						cols="12 4"
 						placeholder="Inform the Month"
@@ -37,14 +38,15 @@ class BillingCycleForm extends Component {
 					/>
 					<Field
 						name="year"
-						component={labelAndInput}
+						component={LabelAndInput}
 						label="Year"
 						cols="12 4"
 						placeholder="Inform the Year"
 						type="number"
 						readOnly={readOnly}
 					/>
-					<CreditList cols="12 6" />
+
+					<CreditList cols="12 6" readOnly={readOnly} list={credits} />
 				</div>
 				<div className="box-footer">
 					<button type="submit" className={`btn btn-${this.props.submitIcon}`}>
@@ -61,6 +63,7 @@ class BillingCycleForm extends Component {
 		);
 	}
 }
+const selector = formValueSelector("billingCycleForm");
 
 // decorator 1
 BillingCycleForm = reduxForm({
@@ -68,10 +71,11 @@ BillingCycleForm = reduxForm({
 	destroyOnUnmount: false,
 })(BillingCycleForm);
 
+const mapStateToProps = (state) => ({ credits: selector(state, "credits") });
 const mapDispatchToProps = (dispatch) => bindActionCreators({ init }, dispatch);
 
 // decorator 2
-export default connect(null, mapDispatchToProps)(BillingCycleForm);
+export default connect(mapStateToProps, mapDispatchToProps)(BillingCycleForm);
 
 // form is a object passa via parameter that as a id to de the named 'billingCycleForm'
 // export default reduxForm({ form: "billingCycleForm", destroyOnUnmount: false })(
