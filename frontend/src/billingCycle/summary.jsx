@@ -28,7 +28,7 @@ export default ({ credit, debt }) => (
 					color="blue"
 					icon="money"
 					value={`R$ ${credit - debt}`}
-					test="Consolidated Value"
+					text="Consolidated Value"
 				/>
 			</Row>
 		</fieldset>

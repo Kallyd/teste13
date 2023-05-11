@@ -13,8 +13,20 @@ import ItemList from "./itemList";
 import Summary from "./summary";
 
 class BillingCycleForm extends Component {
+	// map-reduce
+	calculateSummary() {
+		const sum = (total, actualValue) => total + actualValue;
+		return {
+			sumOfCredits: this.props.credits
+				.map((credit) => +credit.value)
+				.reduce(sum),
+			sumOfDebts: this.props.debts.map((debt) => +debt.value).reduce(sum),
+		};
+	}
+
 	render() {
 		const { handleSubmit, readOnly, credits, debts } = this.props;
+		const { sumOfCredits, sumOfDebts } = this.calculateSummary();
 		return (
 			<form action="" role="form" onSubmit={handleSubmit}>
 				<div className="box-body">
