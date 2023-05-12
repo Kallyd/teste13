@@ -1,4 +1,4 @@
-// Middleware to filter to the authTOken that we created be the only one permited
+// Middleware to filter the authTOken that we created be the only one permited
 const jwt = require('jsonwebtoken');
 const env = require('../.env');
 
@@ -23,7 +23,5 @@ module.exports = (req, res, next) => {
                 next();
             }
         })
-
     }
-
 }
