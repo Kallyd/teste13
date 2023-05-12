@@ -1,8 +1,5 @@
 const express = require('express');
 const auth = require('./auth');
-const billingCycle = require('../api/billingCycle/billingCycleService');
-
-
 
 module.exports = function (server) {
     /**
