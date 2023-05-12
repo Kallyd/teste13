@@ -39,3 +39,54 @@ const validateToken = (req, res, next) => {
         return res.status(200).send({ valid: !err })
     })
 }
+
+const signup = (req, res, next) => {
+    // data passed by the forms
+    const name = req.body.name || '';
+    const email = req.body.email || '';
+    const password = req.body.password || '';
+    const confirmPassword = req.body.confirm_password || '';
+
+    // validating email
+    if (!email.match(emailRegex)) {
+        return res.status(400).send({ errors: ['The email provided is not valid'] })
+    }
+
+    // validating password
+    if (!password.match(passwordRegex)) {
+        return res.status(400).send({
+            errors: [
+                "Password must have: one uppercase letter, one lowercase letter, one number, one special character (@#$%) and length between 6-20."
+            ]
+        })
+    }
+
+    // generating password hash
+    const salt = bcrypt.genSaltSync();
+    const passwordHash = bcrypt.hashSync(password, salt);
+    // validating password with hash
+    if (!bcrypt.compareSync(confirmPassword, passwordHash)) {
+        return res.status(400).send({ errors: ['Passwords do not match'] })
+    }
+
+    // checking if user exists in database
+    User.findOne({ email }, (err, user) => {
+        if (err) {
+            return sendErrorsFromDB(res, err);
+        } else if (user) {
+            return res.status(400).send({ errors: ['User already registered'] })
+        } else {
+            // if user not exists, we will save in the database
+            const newUser = new User({ name, email, password: passwordHash });
+            newUser.save(err => {
+                if (err) {
+                    return sendErrorsFromDB(res, err);
+                } else {
+                    login(req, res, next)
+                }
+            })
+        }
+    })
+}
+
+module.exports = { login, signup, validateToken }
