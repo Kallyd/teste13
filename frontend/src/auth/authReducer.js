@@ -13,6 +13,7 @@ export default (state = INITIAL_STATE, action) => {
                     validToken: true
                 }
             } else {
+                localStorage.removeItem(userKey); // removing token from localstorage
                 return {
                     ...state,
                     validToken: false,
