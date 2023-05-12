@@ -26,8 +26,9 @@ class Auth extends Component {
 		this.state.loginMode ? login(values) : signup(values);
 	}
 	render() {
-		const { loginMode } = this.props;
+		const { loginMode } = this.state;
 		const { handleSubmit } = this.props;
+
 		return (
 			<div className="login-box">
 				<div className="login-logo">
@@ -77,7 +78,7 @@ class Auth extends Component {
 						</Row>
 					</form>
 					<br />
-					<a href="" onClick={() => this.changeMode()}>
+					<a onClick={() => this.changeMode()}>
 						{loginMode
 							? "New User? Sign Up here!"
 							: "Already Registered? Sign In Here!"}
