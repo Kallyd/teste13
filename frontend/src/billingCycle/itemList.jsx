@@ -11,7 +11,8 @@ import If from "../common/operator/if";
 class ItemList extends Component {
 	add(index, item = {}) {
 		if (!this.props.readOnly) {
-			this.props.arrayInsert("billingCycleForm", "credits", index, item);
+			// this.props.arrayInsert("billingCycleForm", "credits", index, item);
+			this.props.arrayInsert("billingCycleForm", this.props.field, index, item);
 		}
 	}
 
