@@ -15,10 +15,12 @@ mongoose.Error.messages.String.enum = "'{VALUE}' not valid for attribute '{PATH}
 //     useUnifiedTopology: true
 // })
 
-// module.exports = mongoose.connect('mongodb+srv://angelinaPierre:Gaptp95123@mymoney-backend.s8lxav6.mongodb.net/?retryWrites=true&w=majority', {
-//     useNewUrlParser: true
-// });
-
-module.exports = mongoose.connect('mongodb://localhost/mymoney', {
-    useNewUrlParser: true
+module.exports = mongoose.connect('mongodb+srv://angelinaPierre:Gaptp95123@mymoney-backend.s8lxav6.mongodb.net/?retryWrites=true&w=majority', {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
 });
+
+// module.exports = mongoose.connect('mongodb://localhost/mymoney', {
+//     useNewUrlParser: true,
+//     useUnifiedTopology: true
+// });
