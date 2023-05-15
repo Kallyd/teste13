@@ -1,5 +1,8 @@
 // Rename to .env
 
 module.exports = {
-    authSecret: ''
+    // Você pode alterar essa chave!
+    authSecret: '',
+    mongoURL: '',
+    port: 3000,
 }

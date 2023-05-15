@@ -1,5 +1,6 @@
-const port = 3003;
-// const port = process.env.PORT || 3003;
+const env = require('../../.env');
+
+const port = env.PORT || 3003;
 
 
 const bodyParse = require('body-parser');
@@ -16,5 +17,6 @@ server.use(queryParser());
 server.listen(port, function () {
     console.log(`Backend is running on port: ${port}`);
 })
+
 
 module.exports = server
