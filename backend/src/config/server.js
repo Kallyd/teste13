@@ -14,7 +14,7 @@ server.use(bodyParse.json());
 server.use(allowCors);
 server.use(queryParser());
 
-server.get("/", (req, res) => {
+server.get("/teste", (req, res) => {
     res.send("Express on Vercel");
 });
 
