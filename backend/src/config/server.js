@@ -14,6 +14,10 @@ server.use(bodyParse.json());
 server.use(allowCors);
 server.use(queryParser());
 
+server.get("/", (req, res) => {
+    res.send("Express on Vercel");
+});
+
 server.listen(port, function () {
     console.log(`Backend is running on port: ${port}`);
 })
