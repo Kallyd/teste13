@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
-const env = require('../../.env');
+const env = require('../.env');
 mongoose.Promise = global.Promise;
 
-// const url = process.env.MONGODB_URI ? process.env.MONGODB_URI : 'mongodb//localhost/mymoney';
+const url = env.mongoURL ? env.mongoURL : 'mongodb//localhost/mymoney';
 
 
 
@@ -11,7 +11,7 @@ mongoose.Error.messages.Number.min = "The '{VALUE} informed is less than the min
 mongoose.Error.messages.Number.max = "The '{VALUE} informed is greater than the maximum limit of '{MAX}'.";
 mongoose.Error.messages.String.enum = "'{VALUE}' not valid for attribute '{PATH}'."
 
-module.exports = mongoose.connect(env.mongoURL, {
+module.exports = mongoose.connect(url, {
     useNewUrlParser: true,
     useUnifiedTopology: true
 });

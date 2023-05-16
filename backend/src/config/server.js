@@ -1,6 +1,6 @@
-const env = require('../../.env');
+const env = require('../.env');
 
-const port = env.PORT || 3003;
+const port = env.port || 3003;
 
 
 const bodyParse = require('body-parser');
